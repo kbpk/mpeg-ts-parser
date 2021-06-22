@@ -1,4 +1,6 @@
 ﻿#pragma once
+#include <string>
+
 #include "TS_PacketHeader.h"
 
 namespace ts
@@ -23,5 +25,7 @@ namespace ts
 
     [[nodiscard]] const PacketHeader* get_header() const { return header; }
     [[nodiscard]] const uint8_t* get_buffer() const { return buffer; }
+
+    [[nodiscard]] std::string to_string() const;
   };
 }

@@ -1,5 +1,6 @@
 ﻿#pragma once
 #include <cstdint>
+#include <string>
 
 namespace ts
 {
@@ -38,5 +39,7 @@ namespace ts
     [[nodiscard]] uint16_t get_packet_identifier() const { return packet_identifier; }
     [[nodiscard]] bool get_payload_unit_start_indicator() const { return payload_unit_start_indicator; }
     [[nodiscard]] uint8_t get_continuity_counter() const { return continuity_counter; }
+
+    [[nodiscard]] std::string to_string() const;
   };
 }

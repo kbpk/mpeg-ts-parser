@@ -1,6 +1,8 @@
 ﻿#include "TS_PacketHeader.h"
 
 #include <exception>
+#include <iomanip>
+#include <sstream>
 
 namespace ts
 {
@@ -16,5 +18,22 @@ namespace ts
     transport_scrambling_control = buffer[3] >> 6;
     adaptation_field_control = (buffer[3] >> 4) & 0x03;
     continuity_counter = buffer[3] & 0x0F;
+  }
+
+  std::string PacketHeader::to_string() const
+  {
+    std::stringstream ss;
+
+    ss
+      << "SB=" << static_cast<unsigned>(sync_byte)
+      << " E=" << transport_error_indicator
+      << " S=" << payload_unit_start_indicator
+      << " P=" << static_cast<unsigned>(transport_priority)
+      << " PID=" << std::setw(4) << packet_identifier
+      << " TSC=" << static_cast<unsigned>(transport_scrambling_control)
+      << " AF=" << static_cast<unsigned>(adaptation_field_control)
+      << " CC=" << std::setw(2) << static_cast<unsigned>(continuity_counter);
+
+    return ss.str();
   }
 }
