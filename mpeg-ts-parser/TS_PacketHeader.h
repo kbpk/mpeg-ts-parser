@@ -26,7 +26,7 @@ namespace ts
     uint8_t sync_byte;
     bool transport_error_indicator;
     bool payload_unit_start_indicator;
-    uint8_t transport_priority_ : 1;
+    uint8_t transport_priority : 1;
     uint16_t packet_identifier : 13;
     uint8_t transport_scrambling_control : 2;
     uint8_t adaptation_field_control : 2;
