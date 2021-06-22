@@ -10,7 +10,7 @@ namespace ts
   class Parser
   {
     std::ifstream ts_file;
-    uint8_t* buffer;
+    uint8_t* buffer = new uint8_t[Packet::LENGTH];
   public:
     explicit Parser(const std::string& ts_filename);
 
