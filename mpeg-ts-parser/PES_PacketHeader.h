@@ -32,9 +32,7 @@ namespace pes
       struct OptionalExtraFields
       {
         static constexpr size_t PTS_START_IDX = (GuaranteedFields::LENGTH + 4) - 1;
-        static constexpr size_t PTS_LENGTH_NEEDED = GuaranteedFields::LENGTH + 3 + Timestamp::LENGTH;
         static constexpr size_t DTS_START_IDX = (GuaranteedFields::LENGTH + 4) - 1 + Timestamp::LENGTH;
-        static constexpr size_t DTS_LENGTH_NEEDED = GuaranteedFields::LENGTH + 3 + 2 * Timestamp::LENGTH;
 
         Timestamp* presentation_timestamp = nullptr;
         Timestamp* decoding_timestamp = nullptr;
@@ -44,20 +42,20 @@ namespace pes
           delete presentation_timestamp;
           delete decoding_timestamp;
         }
-
-        [[nodiscard]] static Timestamp* parse_presentation_timestamp(const std::vector<uint8_t>& buffer);
-        [[nodiscard]] static Timestamp* parse_decoding_timestamp(const std::vector<uint8_t>& buffer);
       };
 
       static constexpr size_t GUARANTEED_LENGTH = 3;
-      static constexpr size_t TIMESTAMP_FLAGS_LENGTH_NEEDED = GuaranteedFields::LENGTH + GUARANTEED_LENGTH - 1;
-      static constexpr size_t HDL_LENGTH_NEEDED = GuaranteedFields::LENGTH + GUARANTEED_LENGTH;
+      static constexpr size_t TIMESTAMP_FLAGS_IDX = (GuaranteedFields::LENGTH + 2) - 1;
+      static constexpr size_t HEADER_DATA_LENGTH_IDX = (GuaranteedFields::LENGTH + GUARANTEED_LENGTH) - 1;
 
       uint8_t timestamp_flags : 2;
       uint8_t header_data_length;
       OptionalExtraFields* optional_extra_fields = nullptr;
 
-      ~ExtraFields() { delete optional_extra_fields; }
+      ~ExtraFields()
+      {
+        delete optional_extra_fields;
+      }
 
       [[nodiscard]] size_t length() const;
 
