@@ -37,6 +37,7 @@ namespace ts
 
   public:
     explicit PacketHeader(const uint8_t* buffer);
+    explicit PacketHeader(const PacketHeader* other);
 
     [[nodiscard]] uint16_t get_packet_identifier() const { return packet_identifier; }
     [[nodiscard]] bool get_payload_unit_start_indicator() const { return payload_unit_start_indicator; }

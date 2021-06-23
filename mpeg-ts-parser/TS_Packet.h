@@ -18,6 +18,7 @@ namespace ts
 
   public:
     explicit Packet(const uint8_t* buffer);
+    explicit Packet(const Packet* other);
 
     ~Packet()
     {
@@ -28,6 +29,7 @@ namespace ts
 
     [[nodiscard]] const PacketHeader* get_header() const { return header; }
     [[nodiscard]] const uint8_t* get_buffer() const { return buffer; }
+    [[nodiscard]] size_t get_payload_length() const;
 
     [[nodiscard]] std::string to_string() const;
   };

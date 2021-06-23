@@ -7,6 +7,7 @@ namespace ts
 {
   class PacketAdaptationField
   {
+    friend class Packet;
   public:
     struct ClockReference
     {
@@ -56,6 +57,7 @@ namespace ts
 
   public:
     PacketAdaptationField(const uint8_t* buffer, const PacketHeader* header);
+    PacketAdaptationField(const uint8_t* buffer, const PacketHeader* header, const PacketAdaptationField* other);
 
     ~PacketAdaptationField()
     {

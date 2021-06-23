@@ -20,6 +20,18 @@ namespace ts
     continuity_counter = buffer[3] & 0x0F;
   }
 
+  PacketHeader::PacketHeader(const PacketHeader* other)
+  {
+    sync_byte = other->sync_byte;
+    transport_error_indicator = other->transport_error_indicator;
+    payload_unit_start_indicator=other->payload_unit_start_indicator;
+    transport_priority=other->transport_priority;
+    packet_identifier = other->packet_identifier;
+    transport_scrambling_control = other->transport_scrambling_control;
+    adaptation_field_control = other->adaptation_field_control;
+    continuity_counter = other->continuity_counter;
+  }
+
   std::string PacketHeader::to_string() const
   {
     std::stringstream ss;

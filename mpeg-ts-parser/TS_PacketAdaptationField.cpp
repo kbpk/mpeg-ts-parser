@@ -151,6 +151,32 @@ namespace ts
     stuffing_bytes_count = count_stuffing_bytes();
   }
 
+  PacketAdaptationField::PacketAdaptationField(const uint8_t* buffer, const PacketHeader* header,
+                                               const PacketAdaptationField* other)
+  {
+    this->buffer = buffer;
+    this->header = header;
+    length = other->length;
+    adaptation_field_length = other->adaptation_field_length;
+    discontinuity_indicator = other->discontinuity_indicator;
+    random_access_indicator = other->random_access_indicator;
+    elementary_stream_priority_indicator = other->elementary_stream_priority_indicator;
+    program_clock_reference_flag = other->program_clock_reference_flag;
+    original_program_clock_reference_flag = other->original_program_clock_reference_flag;
+    splicing_point_flag = other->splicing_point_flag;
+    transport_private_data_flag = other->transport_private_data_flag;
+    adaptation_field_extension_flag = other->adaptation_field_extension_flag;
+    transport_private_data_length = other->transport_private_data_length;
+    adaptation_field_extension_length = other->adaptation_field_extension_length;
+    stuffing_bytes_count = other->stuffing_bytes_count;
+
+    if (const auto* pcr = other->program_clock_reference; pcr)
+      program_clock_reference = new ClockReference{pcr->base, pcr->extension};
+
+    if (const auto* opcr = other->original_program_clock_reference; opcr)
+      original_program_clock_reference = new ClockReference{opcr->base, opcr->extension};
+  }
+
   std::string PacketAdaptationField::to_string() const
   {
     std::stringstream ss;
