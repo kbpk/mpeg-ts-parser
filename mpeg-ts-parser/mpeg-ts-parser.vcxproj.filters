@@ -30,6 +30,9 @@
     <ClCompile Include="TS_PacketAdaptationField.cpp">
       <Filter>Source Files</Filter>
     </ClCompile>
+    <ClCompile Include="PES_PacketHeader.cpp">
+      <Filter>Source Files</Filter>
+    </ClCompile>
   </ItemGroup>
   <ItemGroup>
     <ClInclude Include="parameters.h">
@@ -45,6 +48,9 @@
       <Filter>Header Files</Filter>
     </ClInclude>
     <ClInclude Include="TS_PacketAdaptationField.h">
+      <Filter>Header Files</Filter>
+    </ClInclude>
+    <ClInclude Include="PES_PacketHeader.h">
       <Filter>Header Files</Filter>
     </ClInclude>
   </ItemGroup>
