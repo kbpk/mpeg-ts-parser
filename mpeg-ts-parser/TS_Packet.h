@@ -2,6 +2,7 @@
 #include <string>
 
 #include "TS_PacketHeader.h"
+#include "TS_PacketAdaptationField.h"
 
 namespace ts
 {
@@ -12,6 +13,7 @@ namespace ts
 
   private:
     PacketHeader* header = nullptr;
+    PacketAdaptationField* adaptation_field = nullptr;
     uint8_t* buffer = new uint8_t[LENGTH];
 
   public:
@@ -20,6 +22,7 @@ namespace ts
     ~Packet()
     {
       delete header;
+      delete adaptation_field;
       delete[] buffer;
     }
 

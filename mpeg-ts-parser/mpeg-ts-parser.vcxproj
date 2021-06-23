@@ -149,12 +149,14 @@
   <ItemGroup>
     <ClCompile Include="mpeg-ts-parser.cpp" />
     <ClCompile Include="TS_Packet.cpp" />
+    <ClCompile Include="TS_PacketAdaptationField.cpp" />
     <ClCompile Include="TS_PacketHeader.cpp" />
     <ClCompile Include="TS_Parser.cpp" />
   </ItemGroup>
   <ItemGroup>
     <ClInclude Include="parameters.h" />
     <ClInclude Include="TS_Packet.h" />
+    <ClInclude Include="TS_PacketAdaptationField.h" />
     <ClInclude Include="TS_PacketHeader.h" />
     <ClInclude Include="TS_Parser.h" />
   </ItemGroup>

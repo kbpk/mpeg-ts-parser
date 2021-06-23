@@ -6,6 +6,8 @@ namespace ts
 {
   class PacketHeader
   {
+    friend class Packet;
+    friend class PacketAdaptationField;
   public:
     enum PacketIdentifier : uint16_t
     {
