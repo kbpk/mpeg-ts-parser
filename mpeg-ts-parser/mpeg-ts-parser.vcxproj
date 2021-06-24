@@ -149,6 +149,7 @@
   <ItemGroup>
     <ClCompile Include="FileLogger.cpp" />
     <ClCompile Include="mpeg-ts-parser.cpp" />
+    <ClCompile Include="Options.cpp" />
     <ClCompile Include="PES_Assembler.cpp" />
     <ClCompile Include="PES_Packet.cpp" />
     <ClCompile Include="PES_PacketHeader.cpp" />
@@ -160,6 +161,7 @@
   <ItemGroup>
     <ClInclude Include="cxxopts.hpp" />
     <ClInclude Include="FileLogger.h" />
+    <ClInclude Include="Options.h" />
     <ClInclude Include="parameters.h" />
     <ClInclude Include="PES_Assembler.h" />
     <ClInclude Include="PES_Packet.h" />
