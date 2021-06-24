@@ -33,6 +33,9 @@
     <ClCompile Include="PES_PacketHeader.cpp">
       <Filter>Source Files</Filter>
     </ClCompile>
+    <ClCompile Include="PES_Packet.cpp">
+      <Filter>Source Files</Filter>
+    </ClCompile>
   </ItemGroup>
   <ItemGroup>
     <ClInclude Include="parameters.h">
@@ -51,6 +54,9 @@
       <Filter>Header Files</Filter>
     </ClInclude>
     <ClInclude Include="PES_PacketHeader.h">
+      <Filter>Header Files</Filter>
+    </ClInclude>
+    <ClInclude Include="PES_Packet.h">
       <Filter>Header Files</Filter>
     </ClInclude>
   </ItemGroup>

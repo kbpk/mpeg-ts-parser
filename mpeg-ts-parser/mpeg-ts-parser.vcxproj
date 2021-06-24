@@ -148,6 +148,7 @@
   </ItemDefinitionGroup>
   <ItemGroup>
     <ClCompile Include="mpeg-ts-parser.cpp" />
+    <ClCompile Include="PES_Packet.cpp" />
     <ClCompile Include="PES_PacketHeader.cpp" />
     <ClCompile Include="TS_Packet.cpp" />
     <ClCompile Include="TS_PacketAdaptationField.cpp" />
@@ -156,6 +157,7 @@
   </ItemGroup>
   <ItemGroup>
     <ClInclude Include="parameters.h" />
+    <ClInclude Include="PES_Packet.h" />
     <ClInclude Include="PES_PacketHeader.h" />
     <ClInclude Include="TS_Packet.h" />
     <ClInclude Include="TS_PacketAdaptationField.h" />
