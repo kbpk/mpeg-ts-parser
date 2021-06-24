@@ -1,4 +1,8 @@
 ﻿#include "PES_PacketHeader.h"
+
+#include <iomanip>
+#include <sstream>
+
 #include "parameters.h"
 
 namespace pes
@@ -97,5 +101,27 @@ namespace pes
     const auto& flags = extra_fields->timestamp_flags;
 
     return flags == 0b10 || flags == 0b11;
+  }
+
+  std::string PacketHeader::to_string() const
+  {
+    std::stringstream ss;
+
+    ss
+      << "PES: PSCP=" << guaranteed_fields->packet_start_code_prefix
+      << " SID=" << static_cast<unsigned>(guaranteed_fields->stream_id)
+      << " L=" << guaranteed_fields->packet_length;
+
+    if (can_have_extra_fields() && has_extra_fields()
+      && can_have_optional_extra_fields() && has_optional_extra_fields())
+    {
+      if (const auto* pts = extra_fields->optional_extra_fields->presentation_timestamp; pts)
+        ss << " PTS=" << pts->value << " (Time=" << std::fixed << std::setprecision(6) << pts->seconds() << "s)";
+
+      if (const auto* dts = extra_fields->optional_extra_fields->decoding_timestamp; dts)
+        ss << " DTS=" << dts->value << " (Time=" << std::fixed << std::setprecision(6) << dts->seconds() << "s)";
+    }
+
+    return ss.str();
   }
 }

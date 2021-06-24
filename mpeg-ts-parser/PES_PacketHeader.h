@@ -1,5 +1,6 @@
 ﻿#pragma once
 #include <cstdint>
+#include <string>
 #include <vector>
 
 namespace pes
@@ -32,7 +33,9 @@ namespace pes
       struct OptionalExtraFields
       {
         static constexpr size_t PTS_START_IDX = (GuaranteedFields::LENGTH + 4) - 1;
+        static constexpr size_t PTS_LENGTH_NEEDED = GuaranteedFields::LENGTH + 3 + Timestamp::LENGTH;
         static constexpr size_t DTS_START_IDX = (GuaranteedFields::LENGTH + 4) - 1 + Timestamp::LENGTH;
+        static constexpr size_t DTS_LENGTH_NEEDED = GuaranteedFields::LENGTH + 3 + 2 * Timestamp::LENGTH;
 
         Timestamp* presentation_timestamp = nullptr;
         Timestamp* decoding_timestamp = nullptr;
@@ -47,6 +50,7 @@ namespace pes
       static constexpr size_t GUARANTEED_LENGTH = 3;
       static constexpr size_t TIMESTAMP_FLAGS_IDX = (GuaranteedFields::LENGTH + 2) - 1;
       static constexpr size_t HEADER_DATA_LENGTH_IDX = (GuaranteedFields::LENGTH + 3) - 1;
+      static constexpr size_t HEADER_DATA_LENGTH_NEEDED = GuaranteedFields::LENGTH + GUARANTEED_LENGTH;
 
       uint8_t timestamp_flags : 2;
       uint8_t header_data_length;
@@ -100,5 +104,15 @@ namespace pes
     [[nodiscard]] bool has_guaranteed_fields() const { return guaranteed_fields; }
     [[nodiscard]] bool has_extra_fields() const { return extra_fields; }
     [[nodiscard]] bool has_optional_extra_fields() const { return extra_fields && extra_fields->optional_extra_fields; }
+
+    [[nodiscard]] const GuaranteedFields* get_guaranteed_fields() const { return guaranteed_fields; }
+    [[nodiscard]] const ExtraFields* get_extra_fields() const { return extra_fields; }
+
+    [[nodiscard]] size_t get_length() const
+    {
+      return GuaranteedFields::LENGTH + (extra_fields ? extra_fields->length() : 0);
+    }
+
+    [[nodiscard]] std::string to_string() const;
   };
 }
