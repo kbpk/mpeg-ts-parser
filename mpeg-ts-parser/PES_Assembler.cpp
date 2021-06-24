@@ -7,11 +7,14 @@ namespace pes
     const auto data_buffer = packet->get_data_buffer();
     for (const auto& data : data_buffer) assembling_file << data;
 
+    logger.log_line(packet->ts_packet_buffer_to_string());
+
     delete packet;
     packet = nullptr;
   }
 
   Assembler::Assembler(const uint16_t& packet_identifier, const std::string& assembling_filename)
+    : logger(assembling_filename + ".log")
   {
     this->packet_identifier = packet_identifier;
 

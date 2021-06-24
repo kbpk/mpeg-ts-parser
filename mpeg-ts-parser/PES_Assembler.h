@@ -2,6 +2,7 @@
 #include <cstdint>
 #include <fstream>
 
+#include "FileLogger.h"
 #include "PES_Packet.h"
 
 namespace pes
@@ -11,6 +12,7 @@ namespace pes
     uint16_t packet_identifier : 13;
     uint8_t continuity_counter : 4 = 0;
     std::ofstream assembling_file;
+    FileLogger logger; 
 
     Packet* packet = nullptr;
 
