@@ -9,6 +9,7 @@ struct Options
   std::string ts_filename;
   std::vector<int> video_pids;
   std::vector<int> audio_pids;
+  bool show_status;
 
   [[nodiscard]] static Options parse_options(int argc, char* argv[]);
 };
