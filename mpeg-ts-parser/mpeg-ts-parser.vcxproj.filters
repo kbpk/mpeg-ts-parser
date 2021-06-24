@@ -71,5 +71,8 @@
     <ClInclude Include="FileLogger.h">
       <Filter>Header Files</Filter>
     </ClInclude>
+    <ClInclude Include="cxxopts.hpp">
+      <Filter>Header Files</Filter>
+    </ClInclude>
   </ItemGroup>
 </Project>

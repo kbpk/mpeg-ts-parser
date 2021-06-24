@@ -158,6 +158,7 @@
     <ClCompile Include="TS_Parser.cpp" />
   </ItemGroup>
   <ItemGroup>
+    <ClInclude Include="cxxopts.hpp" />
     <ClInclude Include="FileLogger.h" />
     <ClInclude Include="parameters.h" />
     <ClInclude Include="PES_Assembler.h" />
