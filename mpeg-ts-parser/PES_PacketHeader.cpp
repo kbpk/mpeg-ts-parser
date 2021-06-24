@@ -28,14 +28,14 @@ namespace pes
 
   uint8_t PacketHeader::ExtraFields::parse_timestamp_flags(const std::vector<uint8_t>& buffer)
   {
-    const uint8_t flags_value = (buffer[TIMESTAMP_FLAGS_LENGTH_NEEDED - 1] >> 6) & 0x03;
+    const uint8_t flags_value = (buffer[TIMESTAMP_FLAGS_IDX] >> 6) & 0x03;
 
     return flags_value;
   }
 
   uint8_t PacketHeader::ExtraFields::parse_header_data_length(const std::vector<uint8_t>& buffer)
   {
-    const uint8_t length_data = buffer[HDL_LENGTH_NEEDED - 1];
+    const uint8_t length_data = buffer[HEADER_DATA_LENGTH_IDX];
 
     return length_data;
   }

@@ -46,7 +46,7 @@ namespace pes
 
       static constexpr size_t GUARANTEED_LENGTH = 3;
       static constexpr size_t TIMESTAMP_FLAGS_IDX = (GuaranteedFields::LENGTH + 2) - 1;
-      static constexpr size_t HEADER_DATA_LENGTH_IDX = (GuaranteedFields::LENGTH + GUARANTEED_LENGTH) - 1;
+      static constexpr size_t HEADER_DATA_LENGTH_IDX = (GuaranteedFields::LENGTH + 3) - 1;
 
       uint8_t timestamp_flags : 2;
       uint8_t header_data_length;
